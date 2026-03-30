@@ -24,18 +24,11 @@ public class Main {
         SessionFactory sf = config.buildSessionFactory();
         Session session = sf.openSession();
 
-//        Transaction transaction = session.beginTransaction(); // begin the transaction
-//
-//
-//
-//        session.persist(a); // to save a data into the database
-////        transaction.commit(); // commit the transaction
-
-//        alien b = session.find(alien.class, 2); // to get the data
-
-        session.merge(a);  // merge command check if data is availagle then it will update
-                       // otherwise it will create
-        System.out.println("sucessfully merged th data" );
+        Transaction transaction = session.beginTransaction(); // Start the transaction
+        session.merge(a);  // merge command check if data is available then it will update
+                           // otherwise it will create 
+        transaction.commit(); // Push to DB!
+        System.out.println("successfully merged the data");
 
         session.close();
         sf.close();
