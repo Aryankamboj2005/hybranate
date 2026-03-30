@@ -11,7 +11,7 @@ public class Main {
 
         alien a = new alien();
         a.setMobile(1);
-        a.setName("Aryan kamboj");
+        a.setName("Anil Kumar");
         a.setMarks(100);
 
        Configuration config = new Configuration() ;// for configure the database
@@ -25,10 +25,13 @@ public class Main {
         Session session = sf.openSession();
 
         Transaction transaction = session.beginTransaction(); // Start the transaction
-        session.merge(a);  // merge command check if data is available then it will update
-                           // otherwise it will create 
+
+        alien a1 = session.find(alien.class,1); // (class name , primary key)
+
+        session.remove(a1); // deleting the a1 object in a1 we have passed
+                              // the class name with the primary key
         transaction.commit(); // Push to DB!
-        System.out.println("successfully merged the data");
+        System.out.println("successfully deleted the data");
 
         session.close();
         sf.close();
