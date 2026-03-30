@@ -12,13 +12,23 @@
 
         <!-- Dialect and helper settings -->
 <!--        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
-<!--        <property name="hibernate.show_sql">true</property>-->
+
+
+        <property name="hibernate.show_sql">true</property>
+        <!-- this will print the sql query on the console that the computer enters-->
+
+
        <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- this will auto automatically create the table in the database if the table is
-        not available in the database -->
+        not available in the database           it have multiple propertied like
+           update , create -  delete the existing database and then make the new table
+
+        -->
 
         <!-- Registered entity classes -->
 <!--        <mapping class="org.example.alien"/>-->
+
+
 
     </session-factory>
 </hibernate-configuration>

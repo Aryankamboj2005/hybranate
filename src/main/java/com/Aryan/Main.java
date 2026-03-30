@@ -1,4 +1,4 @@
-package org.example;
+package com.Aryan;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,8 +15,11 @@ public class Main {
         a.setMarks(100);
 
        Configuration config = new Configuration() ;// for configure the database
-        config.addAnnotatedClass(org.example.alien.class);
+        config.addAnnotatedClass(com.Aryan.alien.class);
         config.configure("hibernate.cfg.xml");// load this file for the database configuration details
+
+
+
         // hey hybernate save this data to the sql
         SessionFactory sf = config.buildSessionFactory();
         Session session = sf.openSession();
@@ -27,6 +30,9 @@ public class Main {
 
         session.persist(a); // to save a data into the database
         transaction.commit(); // commit the transaction
+
+        session.close(); // closng the session
+        sf.close(); // removing the session
         System.out.println("Data saved successfully!");
     }
 }

@@ -1,16 +1,17 @@
 package com.Aryan;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-@EntityScan
+@Entity
 public class alien {
   
-  @Id    // this ID make the mobile number as the primary key
-  int mobile; 
-  String name;
+  @Id
+  private int mobile; 
+  private String name;
+  private int marks;
 
   public String getName() {
 	return name;
@@ -24,9 +25,15 @@ public class alien {
   public void setMobile(int mobile) {
 	this.mobile = mobile;
   }
+  public int getMarks() {
+    return marks;
+  }
+  public void setMarks(int marks) {
+    this.marks = marks;
+  }
   
   @Override
   public String toString() {
-    return "alien [name=" + name + ", mobile=" + mobile + "]";
+    return "alien [name=" + name + ", mobile=" + mobile + ", marks=" + marks + "]";
   }
 }

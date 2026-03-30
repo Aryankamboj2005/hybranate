@@ -1,3 +1,6 @@
 com\Aryan\SpringBootRestApplication.class
 com\Aryan\GetAlien.class
+com\Aryan\SaveAlien.class
+com\Aryan\AlienRepo.class
+com\Aryan\Main.class
 com\Aryan\alien.class
