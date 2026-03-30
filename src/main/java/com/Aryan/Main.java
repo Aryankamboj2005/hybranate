@@ -9,30 +9,33 @@ public class Main {
     public static void main(String[] args) {
 
 
+        // 1. Create a data object to be saved
         alien a = new alien();
         a.setMobile(1);
         a.setName("Anil Kumar");
         a.setMarks(100);
 
-       Configuration config = new Configuration() ;// for configure the database
+        // 2. Set up the Hibernate Configuration
+        Configuration config = new Configuration(); 
         config.addAnnotatedClass(com.Aryan.alien.class);
-        config.configure("hibernate.cfg.xml");// load this file for the database configuration details
+        config.configure("hibernate.cfg.xml"); // Load settings from hibernate.cfg.xml
 
-
-
-        // hey hybernate save this data to the sql
+        // 3. Build a SessionFactory (to create sessions)
         SessionFactory sf = config.buildSessionFactory();
+        
+        // 4. Open a Session (to perform database operations)
         Session session = sf.openSession();
+        
+        // 5. Start a Transaction (required for saving data)
+        Transaction transaction = session.beginTransaction(); 
 
-        Transaction transaction = session.beginTransaction(); // Start the transaction
+        // 6. Save the data to the database
+        session.persist(a);
+        transaction.commit(); // Ensure changes are saved!
 
-        alien a1 = session.find(alien.class,1); // (class name , primary key)
+        System.out.println("Operation successful!");
 
-        session.remove(a1); // deleting the a1 object in a1 we have passed
-                              // the class name with the primary key
-        transaction.commit(); // Push to DB!
-        System.out.println("successfully deleted the data");
-
+        // 7. Clean up and close connections
         session.close();
         sf.close();
     }
