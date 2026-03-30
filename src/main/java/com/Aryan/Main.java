@@ -24,15 +24,17 @@ public class Main {
         SessionFactory sf = config.buildSessionFactory();
         Session session = sf.openSession();
 
-        Transaction transaction = session.beginTransaction(); // begin the transaction
+//        Transaction transaction = session.beginTransaction(); // begin the transaction
+//
+//
+//
+//        session.persist(a); // to save a data into the database
+////        transaction.commit(); // commit the transaction
 
+        alien b = session.find(alien.class, 2); // to get the data
+        System.out.println("Fetched Alien: " + b);
 
-
-        session.persist(a); // to save a data into the database
-        transaction.commit(); // commit the transaction
-
-        session.close(); // closng the session
-        sf.close(); // removing the session
-        System.out.println("Data saved successfully!");
+        session.close();
+        sf.close();
     }
 }
