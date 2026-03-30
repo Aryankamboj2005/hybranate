@@ -11,7 +11,7 @@ public class Main {
 
         alien a = new alien();
         a.setMobile(1);
-        a.setName("Aryan");
+        a.setName("Aryan kamboj");
         a.setMarks(100);
 
        Configuration config = new Configuration() ;// for configure the database
@@ -31,8 +31,11 @@ public class Main {
 //        session.persist(a); // to save a data into the database
 ////        transaction.commit(); // commit the transaction
 
-        alien b = session.find(alien.class, 2); // to get the data
-        System.out.println("Fetched Alien: " + b);
+//        alien b = session.find(alien.class, 2); // to get the data
+
+        session.merge(a);  // merge command check if data is availagle then it will update
+                       // otherwise it will create
+        System.out.println("sucessfully merged th data" );
 
         session.close();
         sf.close();
