@@ -12,6 +12,7 @@ public class Main {
         alien a = new alien();
         a.setMobile(1);
         a.setName("Aryan");
+        a.setMarks(100);
 
        Configuration config = new Configuration() ;// for configure the database
         config.addAnnotatedClass(org.example.alien.class);

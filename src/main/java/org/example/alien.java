@@ -8,6 +8,15 @@ public class alien {
     private String name;
     @Id // entity kee priya key
     private int mobile;
+    private int marks;
+
+    public int getMarks() {
+        return marks;
+    }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
 
     public String getName() {
         return name;
